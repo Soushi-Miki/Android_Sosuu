@@ -24,10 +24,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         for (i in 0 until QUESTION_COUNT) {
-            val number = random.nextInt(1000)
+            val number = random.nextInt(10000)
             Log.d("Number", "Question" + number.toString())
             questions[i] = number
         }
+
+        point = 0
+        answerCount = 0
+
+        textView.text = questions[answerCount].toString()+""
+        textView.setTextColor(Color.BLUE)
     }
     fun maru(V: View) {
         var answer = true
@@ -37,9 +43,13 @@ class MainActivity : AppCompatActivity() {
         for (i in 2 until number) {
             if (number % i == 0) {
                 answer = false
+                Log.d("answer","割れた数" + i.toString())
                 break
             }
         }
+
+        Log.d("judge","true or false" + answer.toString())
+
         if (answer){
             Toast.makeText(this,"正解",Toast.LENGTH_SHORT).show()
         }else{
@@ -71,9 +81,13 @@ class MainActivity : AppCompatActivity() {
         for (i in 2 until number) {
             if (number % i == 0) {
                 answer = true
+                Log.d("answer", "割れた数" + i.toString())
                 break
             }
         }
+
+        Log.d("judge","true or false" + answer.toString())
+
         if (answer) {
             Toast.makeText(this, "正解", Toast.LENGTH_SHORT).show()
         } else {
@@ -81,9 +95,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (answer) {
             point++
-            Log.d("batsu", "不正解" + point.toString())
+            Log.d("maru", "正解" + point.toString())
         } else {
-            Log.d("batsu", "正解")
+            Log.d("maru", "不正解")
         }
         answerCount++
         if (answerCount == QUESTION_COUNT) {
