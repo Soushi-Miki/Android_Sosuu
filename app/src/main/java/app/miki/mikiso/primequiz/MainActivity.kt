@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         for (i in 0 until QUESTION_COUNT) {
-            val number = random.nextInt(10000)
+            val number = random.nextInt(1000)
             Log.d("Number", "Question" + number.toString())
             questions[i] = number
         }
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         answerCount = 0
 
         textView.text = questions[answerCount].toString()+""
-        textView.setTextColor(Color.BLUE)
+        textView.setTextColor(Color.YELLOW)
     }
     fun maru(V: View) {
         var answer = true
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             answerCount = 0
         }else{
             textView.text = questions[answerCount].toString() + ""
-            textView.setTextColor(Color.BLUE)
+            textView.setTextColor(Color.RED)
         }
     }
     fun batsu(V: View) {
@@ -102,13 +102,13 @@ class MainActivity : AppCompatActivity() {
         answerCount++
         if (answerCount == QUESTION_COUNT) {
             textView.text = point.toString() + "点"
-            textView.setTextColor(Color.RED)
+            textView.setTextColor(Color.YELLOW)
 
             point = 0
             answerCount = 0
         } else {
             textView.text = questions[answerCount].toString() + ""
-            textView.setTextColor(Color.BLUE)
+            textView.setTextColor(Color.YELLOW)
         }
     }
 }
